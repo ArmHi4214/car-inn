@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <title>คำขอใช้รถ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-4">
+    <h4>คำขอใช้รถ</h4>
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr><th>รถ</th><th>ตั้งแต่</th><th>ถึง</th><th>เหตุผล</th><th>สถานะ</th><th>จัดการ</th></tr>
+        </thead>
+        <tbody>
+        {% for r in rows %}
+            <tr>
+                <td>{{ r[1] }}</td><td>{{ r[2] }}</td><td>{{ r[3] }}</td><td>{{ r[4] }}</td><td>{{ r[5] }}</td>
+                <td>
+                    {% if r[5] == 'pending' %}
+                        <a href="/approve/{{ r[0] }}" class="btn btn-sm btn-success">อนุมัติ</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="/dashboard" class="btn btn-secondary">กลับ</a>
+</div>
+</body>
+</html>

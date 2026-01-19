@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <title>ขอใช้รถ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-4">
+    <h4>แบบฟอร์มขอใช้รถ</h4>
+    <form method="post">
+        <div class="mb-3">
+            <label>เลือกรถ</label>
+            <select name="car_id" class="form-select" required>
+                <option value="">-- เลือกรถ --</option>
+                {% for c in cars %}
+                    <option value="{{ c[0] }}">{{ c[1] }} ({{ c[2] }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3"><label>ตั้งแต่วันที่</label><input type="date" name="ds" class="form-control" required></div>
+        <div class="mb-3"><label>ถึงวันที่</label><input type="date" name="de" class="form-control" required></div>
+        <div class="mb-3"><label>เหตุผล</label><textarea name="reason" class="form-control" rows="3" required></textarea></div>
+        <button class="btn btn-primary">ส่งคำขอ</button>
+        <a href="/dashboard" class="btn btn-secondary">กลับ</a>
+    </form>
+</div>
+</body>
+</html>
